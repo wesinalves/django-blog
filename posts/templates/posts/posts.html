@@ -1,0 +1,11 @@
+{% extends 'posts/base.html'%}
+
+{% block content %}
+<ul>
+    {% for post in posts %}
+    <li>{{post.title}}</li>
+    {% empty %}
+    <li>No post have been added yet.</li>
+    {% endfor %}
+</ul>
+{% endblock content %}
