@@ -12,6 +12,9 @@
     <li>
         <p>{{comment.date_added|date:'M d, Y H:i'}}</p>
         <p>{{comment.text|linebreaks}}</p>
+        <p>
+            <a href="{% url 'posts:edit_comment' comment.id %}">edit comment</a>
+        </p>
     </li>
     {% empty %}
     <li>nenhum comentário!</li>

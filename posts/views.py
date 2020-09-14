@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
-from .models import Post
+from .models import Post, Comment
 from .forms import PostForm, CommentForm
 
 # Create your views here.
@@ -56,3 +56,22 @@ def new_comment(request, post_id):
     
     context = {'post':post, 'form': form}
     return render(request, 'posts/new_comment.html', context)
+
+def edit_comment(request, comment_id):
+    """Edit an existing comment."""
+    comment = Comment.objects.get(id=comment_id)
+    post = comment.post
+
+    if request.method != 'POST':
+        # Initial request; pre-fill form with the current commentary. 
+        form = CommentForm(instance=comment)
+    else:
+        # POST data submitted; process data.
+        form = CommentForm(instance=comment, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('posts:post', args=[post.id]))
+    
+    context = {'comment': comment, 'post': post, 'form': form}
+    return render(request, 'posts/edit_comment.html', context)
+

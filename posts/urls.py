@@ -18,5 +18,10 @@ urlpatterns = [
     url(r'^new_post/$', views.new_post, name='new_post'),
 
     # add new comment
-    url(r'^new_comment/(?P<post_id>\d+)/$', views.new_comment, name='new_comment'),
+    url(r'^new_comment/(?P<post_id>\d+)/$', views.new_comment, 
+        name='new_comment'),
+
+    # edit a comment
+    url(r'^edit_comment/(?P<comment_id>\d+)/$', views.edit_comment,
+        name='edit_comment'),
 ]
