@@ -16,4 +16,7 @@ urlpatterns = [
 
     # add new post
     url(r'^new_post/$', views.new_post, name='new_post'),
+
+    # add new comment
+    url(r'^new_comment/(?P<post_id>\d+)/$', views.new_comment, name='new_comment'),
 ]

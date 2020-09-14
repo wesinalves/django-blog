@@ -1,7 +1,7 @@
 {% extends "posts/base.html" %}
 
 {% block content %}
-<p>Add a new topic:</p>
+<p>Add a new post:</p>
 <form action="{% url 'posts:new_post' %}" method='post'>
     {% csrf_token %}
     {{form.as_p}}

@@ -4,6 +4,9 @@
 <h1>{{ post.title }}</h1>
 <p>{{post.text}}</p>
 <p>Comentários:</p>
+<p>
+    <a href="{% url 'posts:new_comment' post.id %}">add new comment</a>
+    </p>
 <ul>
     {% for comment in comments %}
     <li>

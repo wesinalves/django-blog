@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 
 from .models import Post
-from .forms import PostForm
+from .forms import PostForm, CommentForm
 
 # Create your views here.
 def index(request):
@@ -37,3 +37,22 @@ def new_post(request):
     
     context = {'form': form}
     return render(request, 'posts/new_post.html', context)
+
+def new_comment(request, post_id):
+    """Add a mew comment"""
+    post = Post.objects.get(id=post_id)
+
+    if request.method != 'POST':
+        # No data submitted; create a blank form
+        form = CommentForm()
+    else:
+        # Comment data submitted; process data
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            new_comment = form.save(commit=False)
+            new_comment.post = post
+            new_comment.save()
+            return HttpResponseRedirect(reverse('posts:post', args=[post_id]))
+    
+    context = {'post':post, 'form': form}
+    return render(request, 'posts/new_comment.html', context)
