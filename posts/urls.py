@@ -12,5 +12,8 @@ urlpatterns = [
     url(r'^posts$', views.posts, name='posts'),
 
     # Detail page for a single post
-    url(r'^posts/(?P<post_id>\d+)/$', views.post, name='post')
+    url(r'^posts/(?P<post_id>\d+)/$', views.post, name='post'),
+
+    # add new post
+    url(r'^new_post/$', views.new_post, name='new_post'),
 ]
