@@ -10,4 +10,7 @@ urlpatterns = [
 
     # show all posts
     url(r'^posts$', views.posts, name='posts'),
+
+    # Detail page for a single post
+    url(r'^posts/(?P<post_id>\d+)/$', views.post, name='post')
 ]

@@ -7,7 +7,7 @@ class Post(models.Model):
     text = models.TextField()
     date_added = models.DateTimeField(auto_now_add=True)
 
-    def __st__(self):
+    def __str__(self):
         '''Return a string representation of model'''
         return self.title
 
@@ -20,7 +20,7 @@ class Comment(models.Model):
     class Meta:
         verbose_name_plural = 'comments'
     
-    def __st__(self):
+    def __str__(self):
         '''Return a string representation of model'''
         return self.text[:50] + '...'
 
