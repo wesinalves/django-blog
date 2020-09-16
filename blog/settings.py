@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     # My apps
     'posts',
     'django_seed',
+    'users',
 ]
 
 MIDDLEWARE = [

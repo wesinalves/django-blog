@@ -24,4 +24,5 @@ urlpatterns = [
     # edit a comment
     url(r'^edit_comment/(?P<comment_id>\d+)/$', views.edit_comment,
         name='edit_comment'),
+    
 ]
